@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import { useTheme } from '../ThemeContent';
-
+import {API_BASE_URL} from '../config.js'
 function Form() {
   const [username, setUsername] = useState('');
   const [expense, setExpense] = useState({
@@ -36,7 +36,7 @@ const { toggleTheme } = useTheme();
     setError('');
 
     try {
-      const res = await axios.post('/api/expenses', { username, ...expense });
+      const res = await axios.post('${API_BASE_URL}/api/expenses', { username, ...expense });
       setMessage(res.data.message);
       setExpense({ amount: '', category: '', description: '', date: '' });
     } catch (err) {

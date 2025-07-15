@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import {API_BASE_URL} from '../config.js'
 function Signup() {
   const [step, setStep] = useState('form');
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ function Signup() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('/api/users/request-otp', formData);
+      const res = await axios.post('${API_BASE_URL}/api/users/request-otp', formData);
       setMessage(res.data.message);
       setStep('otp');
     } catch (err) {
@@ -36,7 +36,7 @@ function Signup() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('/api/users/verify-otp', {
+      const res = await axios.post('${API_BASE_URL}/api/users/verify-otp', {
         username: formData.username,
         otp
       });

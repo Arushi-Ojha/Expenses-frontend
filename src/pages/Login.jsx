@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { GoogleLogin } from '@react-oauth/google';
-
+import {API_BASE_URL} from '../config.js'
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,7 +10,7 @@ function Login() {
  const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('/api/users/login', {
+    const res = await axios.post('${API_BASE_URL}/api/users/login', {
       username,
       password,
     });
