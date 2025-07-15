@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
-import {API_BASE_URL} from '../config.js'
+import {API_BASE_URL} from '../config.js';
 import {
   PieChart,
   Pie,

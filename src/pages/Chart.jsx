@@ -39,7 +39,7 @@ const { toggleTheme } = useTheme();
       const resUser = await axios.get(`${API_BASE_URL}/api/expenses/${username}`);
       setBudget(resUser.data.remaining_balance + resUser.data.total_spent);
 
-      const res = await axios.get(`/api/expenses/${username}/filter`, { params: { from, to } });
+      const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}/filter`, { params: { from, to } });
       const expenses = res.data.filtered_expenses;
 
       const grouped = {};

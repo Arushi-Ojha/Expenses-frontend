@@ -36,7 +36,7 @@ const { toggleTheme } = useTheme();
     setError('');
 
     try {
-      const res = await axios.post('${API_BASE_URL}/api/expenses', { username, ...expense });
+      const res = await axios.post(`${API_BASE_URL}/api/expenses`, { username, ...expense });
       setMessage(res.data.message);
       setExpense({ amount: '', category: '', description: '', date: '' });
     } catch (err) {

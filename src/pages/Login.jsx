@@ -10,7 +10,7 @@ function Login() {
  const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('${API_BASE_URL}/api/users/login', {
+    const res = await axios.post(`${API_BASE_URL}/api/users/login`, {
       username,
       password,
     });
@@ -28,7 +28,7 @@ function signup(){
 
   const handleGoogleLogin = async (response) => {
     try {
-      const res = await axios.post('/api/google-login', {
+      const res = await axios.post(`${API_BASE_URL}/api/google-login`, {
         credential: response.credential,
       });
 
