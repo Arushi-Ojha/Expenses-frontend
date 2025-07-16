@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import Navbar from './Navbar';
 import { useTheme } from '../ThemeContent';
-import {API_BASE_URL} from '../config.js'
+import { BASE_URL } from '../config';
 function Table() {
   const [username, setUsername] = useState('');
   const [expenses, setExpenses] = useState([]);
@@ -31,7 +31,7 @@ const { toggleTheme } = useTheme();
 
   const fetchExpenses = async (username) => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}`);
+      const res = await axios.get(`${BASE_URL}/api/expenses/${username}`);
       setExpenses(res.data.expenses);
       setBudgetInfo({
         total_spent: res.data.total_spent,
@@ -44,7 +44,7 @@ const { toggleTheme } = useTheme();
 
   const handleSort = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}/sort?order=${sortOrder}`);
+      const res = await axios.get(`${BASE_URL}/api/expenses/${username}/sort?order=${sortOrder}`);
       setExpenses(res.data.expenses);
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     } catch (err) {
@@ -58,7 +58,7 @@ const { toggleTheme } = useTheme();
     }
 
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}/filter`, {
+      const res = await axios.get(`${BASE_URL}/api/expenses/${username}/filter`, {
         params: filterDates
       });
       setExpenses(res.data.filtered_expenses);
@@ -69,7 +69,7 @@ const { toggleTheme } = useTheme();
 
   const handleDelete = async (expenseId) => {
     try {
-      await axios.delete(`${API_BASE_URL}/api/expenses/${username}/${expenseId}`);
+      await axios.delete(`${BASE_URL}/api/expenses/${username}/${expenseId}`);
       setExpenses((prev) => prev.filter((e) => e.id !== expenseId));
     } catch (err) {
       setError('Deletion failed');
@@ -81,7 +81,7 @@ const { toggleTheme } = useTheme();
     const { id, amount, category, description, date } = editExpense;
 
     try {
-      await axios.put(`${API_BASE_URL}/api/expenses/${username}/${id}`, {
+      await axios.put(`${BASE_URL}/api/expenses/${username}/${id}`, {
         amount,
         category,
         description,

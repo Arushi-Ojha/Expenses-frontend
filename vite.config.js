@@ -1,3 +1,4 @@
+// vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -6,8 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_BASE_URL, // or your hardcoded backend URL
+        target: 'https://j2eqot4xvw3dds3woipr3de64q0pnkqn.lambda-url.ap-south-1.on.aws',
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },
     },

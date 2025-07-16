@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import { useTheme } from '../ThemeContent';
-import {API_BASE_URL} from '../config.js'
+import { BASE_URL } from '../config';
 function Profile() {
   const [username, setUsername] = useState('');
   const [profile, setProfile] = useState({ email: '', budget: '', password: '' });
@@ -20,7 +20,7 @@ const { toggleTheme } = useTheme();
     }
     setUsername(storedUsername);
 
-    axios.get(`${API_BASE_URL}/api/users/${storedUsername}`)
+    axios.get(`${BASE_URL}/api/users/${storedUsername}`)
       .then(res => {
         const { email, budget } = res.data;
         setProfile(prev => ({ ...prev, email, budget }));
@@ -33,7 +33,7 @@ const { toggleTheme } = useTheme();
 
   const handleEditClick = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/users/${username}`);
+      const res = await axios.get(`${BASE_URL}/api/users/${username}`);
       const { email, budget } = res.data;
       setProfile({ email, budget, password: '' });
       setEditMode(true);
@@ -54,7 +54,7 @@ const { toggleTheme } = useTheme();
     setError('');
     setMessage('');
     try {
-      const res = await axios.put(`${API_BASE_URL}/api/users/${username}`, profile);
+      const res = await axios.put(`${BASE_URL}/api/users/${username}`, profile);
       setMessage(res.data.message);
       setEditMode(false);
     } catch (err) {

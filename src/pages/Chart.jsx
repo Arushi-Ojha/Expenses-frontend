@@ -3,7 +3,7 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { useTheme } from '../ThemeContent';
-import {API_BASE_URL} from '../config.js'
+import { BASE_URL } from '../config';
 function Chart() {
   const [username, setUsername] = useState('');
   const [data, setData] = useState([]);
@@ -36,10 +36,10 @@ const { toggleTheme } = useTheme();
 
   const fetchAndPrepareData = async (username, from, to) => {
     try {
-      const resUser = await axios.get(`${API_BASE_URL}/api/expenses/${username}`);
+      const resUser = await axios.get(`${BASE_URL}/api/expenses/${username}`);
       setBudget(resUser.data.remaining_balance + resUser.data.total_spent);
 
-      const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}/filter`, { params: { from, to } });
+      const res = await axios.get(`${BASE_URL}/api/expenses/${username}/filter`, { params: { from, to } });
       const expenses = res.data.filtered_expenses;
 
       const grouped = {};

@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
-import {API_BASE_URL} from '../config.js';
+import { BASE_URL } from '../config';
 import {
   PieChart,
   Pie,
@@ -36,7 +36,7 @@ const { toggleTheme } = useTheme();
 
     const fetchExpenses = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/expenses/${username}`);
+        const res = await axios.get(`${BASE_URL}/api/expenses/${username}`);
         const expenses = res.data.expenses;
 
         const categoryTotals = {};
