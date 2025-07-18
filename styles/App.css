@@ -93,36 +93,34 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--navbar-color);
-  color: var(--text-color);
+  background-color: var(--navbar-bg);
   padding: 1rem 2rem;
-  text-align: center;
-  z-index: 1000;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 0 0 10px 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
+  justify-content: center;
+  gap: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 nav button {
-  margin: 20px 10px;
-  background-color: var(--text-color);
-  color: var(--bg-color);
-  padding: 8px 16px;
+  background-color: var(--card);
+  color: var(--text);
   border: none;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-weight: 600;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 nav button:hover {
-  opacity: 0.8;
+  background-color: var(--button-hover);
+  color: var(--bg);
   transform: scale(1.05);
 }
+
 
 /* TOGGLE BUTTON POSITIONED BOTTOM-RIGHT */
 .toggle-btn {
